@@ -1,6 +1,7 @@
 from pybliometrics.scopus import ScopusSearch
 from tqdm import tqdm
 import xlsxwriter
+from datetime import datetime
 
 class Document:
 
@@ -122,7 +123,9 @@ class ScopusMiner:
         self.writeToExcel()
         
     def writeToExcel(self):
-        workbook = xlsxwriter.Workbook('PermutationSearchResults.xlsx')
+        now = datetime.now()
+        date_time = now.strftime("%Y%m%d_%H%M")
+        workbook = xlsxwriter.Workbook('PermutationSearchResults'+date_time+'.xlsx')
         worksheet = workbook.add_worksheet()
         
         row = 0
