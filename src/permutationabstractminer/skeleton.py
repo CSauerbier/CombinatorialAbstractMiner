@@ -18,6 +18,7 @@ Note: This skeleton file can be safely removed if not needed!
 import argparse
 import sys
 import logging
+from permutationabstractminer import PermutationSearch
 
 from permutationabstractminer import __version__
 
@@ -98,11 +99,34 @@ def main(args):
     Args:
       args ([str]): command line parameter list
     """
-    args = parse_args(args)
-    setup_logging(args.loglevel)
-    _logger.debug("Starting crazy calculations...")
-    print("The {}-th Fibonacci number is {}".format(args.n, fib(args.n)))
-    _logger.info("Script ends here")
+    # args = parse_args(args)
+    # setup_logging(args.loglevel)
+    # _logger.debug("Starting crazy calculations...")
+    # print("The {}-th Fibonacci number is {}".format(args.n, fib(args.n)))
+    # _logger.info("Script ends here")
+
+    if(len(sys.argv) == 1):
+        print("\nPerforms searches on the Scopus database by forming all permutations of the keywords provided.")
+        print("\tThe results' abstracts are saved to an excel file in the current directory")
+        print("\nUsage: \tEnter groups of keywords as arguments, with the individual keywords delimited by commas, e.g.")
+        print("\tpermutationabstractminer test1,\"test 2\" test3")
+        print("will search the scopus database for the search strings")
+        print("\tTITLE-ABS-KEY(test1 AND test3)")
+        print("\tTITLE-ABS-KEY(test2 AND test3)")
+        print("If you want a keyword to contain white spaces, make sure to enclose it with quotation marks as seen above\n")
+
+    else:
+        keywords = []
+
+        for i in range(1,len(sys.argv)):
+            keywords.append(sys.argv[i].split(','))
+        
+        print("Using the following keyword set:")
+        print(keywords)
+
+        miner = PermutationSearch.ScopusMiner()
+        miner.run(*keywords)
+    
 
 
 def run():
