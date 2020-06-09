@@ -23,7 +23,7 @@ class Document:
     def setDOI(self, doi):
         self.doi = doi
 
-class PermutationIterator:
+class CombinationIterator:
     def __init__(self, *keywords):
         self.keywords = keywords
         self.maxCounters = []
@@ -39,7 +39,7 @@ class PermutationIterator:
             prod = prod * multiplier
         self.noOfIterations = prod
     
-    def getNextPermutation(self):
+    def getNextCombination(self):
         retValue = []
         for i, kw in enumerate(self.keywords):
             retValue.append(kw[self.curCounters[i]])
@@ -116,16 +116,16 @@ class ScopusMiner:
                 NoOfResultsStored = NoOfResultsStored + 1
     
     def run(self, *keywords):
-        self.permIterator = PermutationIterator(*keywords)
+        self.permIterator = CombinationIterator(*keywords)
         for i in tqdm(range(self.permIterator.noOfIterations)):
-            self.performSearch(self.permIterator.getNextPermutation())
+            self.performSearch(self.permIterator.getNextCombination())
         
         self.writeToExcel()
         
     def writeToExcel(self):
         now = datetime.now()
         date_time = now.strftime("%Y%m%d_%H%M")
-        workbook = xlsxwriter.Workbook('PermutationSearchResults'+date_time+'.xlsx')
+        workbook = xlsxwriter.Workbook('CombinatorialSearchResults'+date_time+'.xlsx')
         worksheet = workbook.add_worksheet()
         
         row = 0

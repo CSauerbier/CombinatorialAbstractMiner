@@ -1,5 +1,5 @@
 ========================
-PermutationAbstractMiner
+CombinatorialAbstractMiner
 ========================
 
 

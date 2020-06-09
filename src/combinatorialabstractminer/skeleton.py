@@ -5,7 +5,7 @@ console script. To run this script uncomment the following lines in the
 [options.entry_points] section in setup.cfg:
 
     console_scripts =
-         fibonacci = permutationabstractminer.skeleton:run
+         fibonacci = combinatorialabstractminer.skeleton:run
 
 Then run `python setup.py install` which will install the command `fibonacci`
 inside your current environment.
@@ -18,9 +18,9 @@ Note: This skeleton file can be safely removed if not needed!
 import argparse
 import sys
 import logging
-from permutationabstractminer import PermutationSearch
+from combinatorialabstractminer import CombinatorialSearch
 
-from permutationabstractminer import __version__
+from combinatorialabstractminer import __version__
 
 __author__ = "Christoph Sauerbier"
 __copyright__ = "Christoph Sauerbier"
@@ -59,7 +59,7 @@ def parse_args(args):
     parser.add_argument(
         "--version",
         action="version",
-        version="PermutationAbstractMiner {ver}".format(ver=__version__))
+        version="CombinatorialAbstractMiner {ver}".format(ver=__version__))
     parser.add_argument(
         dest="n",
         help="n-th Fibonacci number",
@@ -106,10 +106,10 @@ def main(args):
     # _logger.info("Script ends here")
 
     if(len(sys.argv) == 1):
-        print("\nPerforms searches on the Scopus database by forming all permutations of the keywords provided.")
+        print("\nPerforms searches on the Scopus database by forming all combinations of the keywords provided.")
         print("\tThe results' abstracts are saved to an excel file in the current directory")
         print("\nUsage: \tEnter groups of keywords as arguments, with the individual keywords delimited by commas, e.g.")
-        print("\tpermutationabstractminer test1,\"test 2\" test3")
+        print("\tcaminer test1,\"test 2\" test3")
         print("will search the scopus database for the search strings")
         print("\tTITLE-ABS-KEY(test1 AND test3)")
         print("\tTITLE-ABS-KEY(test2 AND test3)")
@@ -124,7 +124,7 @@ def main(args):
         print("Using the following keyword set:")
         print(keywords)
 
-        miner = PermutationSearch.ScopusMiner()
+        miner = CombinatorialSearch.ScopusMiner()
         miner.run(*keywords)
     
 

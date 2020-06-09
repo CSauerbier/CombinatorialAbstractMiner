@@ -1,5 +1,5 @@
 import sys
-import PermutationSearch
+import CombinatorialSearch
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     # keywords2 = ['Validat*', 'Simulat*', 'Testing', 'Verif*']
     # keywords3 = ['Collision$ Avoidance', 'Obstacle$ Detection$']
 
-    miner = PermutationSearch.ScopusMiner()
+    miner = CombinatorialSearch.ScopusMiner()
     miner.run(keywords1, keywords2, keywords3)
 
 if __name__ == "__main__":
