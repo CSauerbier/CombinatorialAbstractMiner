@@ -24,14 +24,14 @@ pip install from source::
 Usage
 =====
 
-Enter groups of keywords as arguments, with the individual keywords delimited by commas, e.g.::
+Use the command caminer and enter groups of keywords as arguments, with the individual keywords delimited by commas, e.g.::
     
-    caminer test1,\"test 2\" test3
+    caminer test1,"test 2" test3
 
-will search the scopus database for the search strings
+This will search the scopus database for the following search strings
     
     TITLE-ABS-KEY(test1 AND test3)
-    
+
     TITLE-ABS-KEY(test2 AND test3)
 
 If you want a keyword to contain white spaces, make sure to enclose it with quotation marks as seen above 
