@@ -31,6 +31,7 @@ Enter groups of keywords as arguments, with the individual keywords delimited by
 will search the scopus database for the search strings
     
     TITLE-ABS-KEY(test1 AND test3)
+    
     TITLE-ABS-KEY(test2 AND test3)
 
 If you want a keyword to contain white spaces, make sure to enclose it with quotation marks as seen above 
